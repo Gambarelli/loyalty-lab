@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box;
+}
+
+.profileTagContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-width: 215px;
+    justify-content: space-between;
+}
+
+.profileTagContainer__name{
+    font-size: 24px;
+    line-height: 48px;
+    letter-spacing: -0.15px;
+    color: #616161;
+}
+
+.profileTagContainer__pointsContainer{
+    font-size: 24px;
+    line-height: 48px;
+    letter-spacing: -0.15px;
+    color: #616161;
+    background: #EDEDED;
+    border-radius: 20px;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 48px;
+    cursor: pointer;
+    transition: 250ms ease-in-out; 
+}
+
+.profileTagContainer__pointsContainer:hover{
+    background: rgb(194, 194, 194);
+}
+
+
+.profileTagContainer__pointsContainer__pointsQty{
+    padding-right: 5px; 
+}

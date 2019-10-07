@@ -1,5 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900&display=swap');
+
+*{
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .App {
   text-align: center;
+  background-color: #F9F9F9;
+}
+
+.ProductGridContainer{
+  max-width: 1176px;
+  margin: 30px auto;
+  
 }
 
 .App-logo {
@@ -20,3 +34,5 @@
 .App-link {
   color: #09d3ac;
 }
+
+.filterContainer::-webkit-scrollbar { width: 0 !important }
