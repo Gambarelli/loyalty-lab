@@ -2,8 +2,8 @@ import React from 'react'
 
 const UserContext = React.createContext(
     {
-        userState: {},
-        setUserState: () => {}
+        user: {},
+        setUserPoints: () => {}
     }
 )
 

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Product.css';
 import shoppingIcon from '../../assets/Icon-blue.svg'
 import shoppingIconWhite from '../../assets/icon-white.svg'
@@ -9,14 +9,23 @@ import ApiService from '../../services/apiService';
 
 const Product = ({product}) => {
     
-    const {user, setUser} = useContext(userContext)
+    const {user, setUserPoints} = useContext(userContext)
+    const [redeemed, setRedeemed] = useState(false);
     const apiService = new ApiService()
 
-    const redeem = () => {
-         apiService.redeemProduct(product._id).then(({data}) => {
+    useEffect(() => {
+        const redeem = async () => {
+            const { data } = await apiService.redeemProduct(product._id);
              console.log(data);
-         });
-   }
+             const points = user.points - product.cost;
+             setUserPoints(points);
+             setRedeemed(false);
+        }
+        if(redeemed) redeem();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [redeemed])
+
+    
 
     return (
         <div className="productCardContainer">
@@ -25,7 +34,7 @@ const Product = ({product}) => {
                     <div className="productCardContainer__ActionOverlay__Points">{product.cost}</div>
                     <img src={coin} alt="coin"></img> 
                 </div>
-                <div onClick={redeem} className="productCardContainer__ActionOverlay__RedeemButton">Redeem now</div>
+                <div onClick={() => setRedeemed(true)} className="productCardContainer__ActionOverlay__RedeemButton">Redeem now</div>
                 <div className="productCardContainer__shoppingBag--white">
                     <img src={shoppingIconWhite} alt="icon"></img>
                 </div>
