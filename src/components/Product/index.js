@@ -5,6 +5,7 @@ import shoppingIconWhite from '../../assets/icon-white.svg'
 import coin from "../../assets/money.svg";
 import userContext from '../../context/userContext'
 import ApiService from '../../services/apiService';
+import { store } from 'react-notifications-component';
 
 
 const Product = ({product}) => {
@@ -19,13 +20,28 @@ const Product = ({product}) => {
              console.log(data);
              const points = user.points - product.cost;
              setUserPoints(points);
+             addNotification();
              setRedeemed(false);
         }
         if(redeemed) redeem();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [redeemed])
 
-    
+    const addNotification = () => {
+        store.addNotification({
+            title: "You deserved it.",
+            message: `${product.name} is on it's way to you!`,
+            type: "default",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animated", "jackInTheBox"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+              duration: 3000,
+              onScreen: true
+            }
+          });
+    }
 
     return (
         <div className="productCardContainer">
@@ -34,7 +50,7 @@ const Product = ({product}) => {
                     <div className="productCardContainer__ActionOverlay__Points">{product.cost}</div>
                     <img src={coin} alt="coin"></img> 
                 </div>
-                <div onClick={() => setRedeemed(true)} className="productCardContainer__ActionOverlay__RedeemButton">Redeem now</div>
+                <div data-micron="tada" onClick={() => setRedeemed(true)} className="productCardContainer__ActionOverlay__RedeemButton">Redeem now</div>
                 <div className="productCardContainer__shoppingBag--white">
                     <img src={shoppingIconWhite} alt="icon"></img>
                 </div>

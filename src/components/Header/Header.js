@@ -6,7 +6,7 @@ import ProfileTag from '../profileTag/ProfileTag'
 const Header = () => {
     return (
         <div className="Header">
-            <img src={logo} alt="logo"></img>
+            <img className="logo" src={logo} alt="logo"></img>
             <ProfileTag></ProfileTag>
         </div>
     );

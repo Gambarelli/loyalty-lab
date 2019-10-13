@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    min-width: 215px;
+    min-width: 230px;
     justify-content: space-between;
 }
 
@@ -15,6 +15,13 @@
     line-height: 48px;
     letter-spacing: -0.15px;
     color: #616161;
+    display: flex;
+    cursor: pointer;
+    transition: 250ms ease-in-out;
+}
+
+.profileTagContainer__name:hover{
+    color: #464646;
 }
 
 .profileTagContainer__pointsContainer{
@@ -40,4 +47,64 @@
 
 .profileTagContainer__pointsContainer__pointsQty{
     padding-right: 5px; 
+}
+
+
+
+.modal {
+    outline: none;
+    background: white;
+    font-size: 1.6rem;
+    width: 76rem;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    z-index: 15;
+    min-height: 47rem;
+    max-height: 90vh;
+    border-radius: 8px;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .modal_profileData{
+    font-weight: 800;
+    font-size: 24px;
+    color: #616161;
+    padding: 20px
+  }
+
+  .modal_redeemedProducts{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    padding: 20px;
+    align-items: center;
+    overflow-x: auto;
+    border-radius: 8px;
+    flex-flow: wrap;
+  }
+  
+  @media (max-width: 768px) {
+    .modal {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      align-self: flex-end;
+    }
+  }
+
+
+@media (max-width: 545px) {
+    .profileTagContainer__name{
+        font-size: 20px;
+    }
+
+    .profileTagContainer{
+        justify-content: space-around;
+    }
 }

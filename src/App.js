@@ -6,7 +6,9 @@ import HeroSection from "./components/HeroSection/HeroSection";
 import ApiService from "./services/apiService";
 import { UserProvider } from "./context/userContext";
 import useUser from './hooks/useUser';
-
+import ReactNotification from 'react-notifications-component'
+import '../node_modules/animate.css/animate.min.css';
+import 'react-notifications-component/dist/theme.css'
 //Uses React, ContextAPI, Hooks, Storybook
 
 function App() {
@@ -23,11 +25,17 @@ function App() {
 
   return (
     <div className="App">
+      <ReactNotification />
       <UserProvider value={{ user, setUserPoints }}>
         <Header />
         <HeroSection />
         <div className="ProductGridContainer">
           <ProductGrid />
+        </div>
+        <div className="NoticeBar">
+            <div>
+              Hey Psst! Try Clicking your current credits for more coins (maybe? <span role="img" aria-label="wait what" style={{fontSize: 24}}>🤔</span>).
+            </div>
         </div>
       </UserProvider>
     </div>

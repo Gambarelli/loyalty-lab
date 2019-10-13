@@ -3,6 +3,7 @@ import './ProductGrid.css'
 import Product from "../Product"
 import ApiService from '../../services/apiService';
 import { sortWith, descend, ascend, prop } from "ramda";
+import Skeleton from "../../../node_modules/react-skeleton-loader/dist/Skeleton";
 
 const FILTERS = {
     RECENT: 'RECENT',
@@ -53,6 +54,7 @@ const ProductGrid = () => {
         const fetchProducts = async () => {
             dispatch({type: 'FETCH_PRODUCTS'});
             const { data } = await apiService.getProducts();
+            debugger;
             dispatch({type: 'FETCH_PRODUCTS_SUCCESS', products: data });
         }
         fetchProducts();
@@ -60,7 +62,21 @@ const ProductGrid = () => {
     },[]);
 
     if(state.loading){
-        return <div style={{padding: 100}}>Loading...</div>
+        return <div style={{flexFlow: 'wrap', display:'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+            <div style={{height: 276, width: 276, margin: 8}}>
+                <Skeleton height="276px" width="276px"/>
+            </div>
+            <div style={{height: 276, width: 276, margin: 8}}>
+                <Skeleton height="276px" width="276px"/>
+            </div>
+            <div style={{height: 276, width: 276, margin: 8}}>
+                <Skeleton height="276px" width="276px"/>
+            </div>
+            <div style={{height: 276, width: 276, margin: 8}}>
+                <Skeleton height="276px" width="276px"/>
+            </div>
+
+        </div>
     }
 
     return (
@@ -69,9 +85,9 @@ const ProductGrid = () => {
                 <div className="filterContainer__Inner">
                     <div className="filterContainer__paging">32 of 32 products</div>
                     <div className="v-border"></div>
-                    <div onClick={() => dispatch({type: 'SET_ACTIVE_FILTER', filter: FILTERS.RECENT })} className="filterContainer__FilterChip">Most Recent</div>
-                    <div onClick={() => dispatch({type: 'SET_ACTIVE_FILTER', filter: FILTERS.LOW })} className="filterContainer__FilterChip">Lowest Price</div>
-                    <div onClick={() => dispatch({type: 'SET_ACTIVE_FILTER', filter: FILTERS.HIGH })} className="filterContainer__FilterChip">Highest Price</div>
+                    <div data-micron="blink" onClick={() => dispatch({type: 'SET_ACTIVE_FILTER', filter: FILTERS.RECENT })} className="filterContainer__FilterChip">Most Recent</div>
+                    <div data-micron="blink" onClick={() => dispatch({type: 'SET_ACTIVE_FILTER', filter: FILTERS.LOW })} className="filterContainer__FilterChip">Lowest Price</div>
+                    <div data-micron="blink" onClick={() => dispatch({type: 'SET_ACTIVE_FILTER', filter: FILTERS.HIGH })} className="filterContainer__FilterChip">Highest Price</div>
                 </div>
             </div>
             <div className="productGrid">
