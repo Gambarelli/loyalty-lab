@@ -54,7 +54,6 @@ const ProductGrid = () => {
         const fetchProducts = async () => {
             dispatch({type: 'FETCH_PRODUCTS'});
             const { data } = await apiService.getProducts();
-            debugger;
             dispatch({type: 'FETCH_PRODUCTS_SUCCESS', products: data });
         }
         fetchProducts();
